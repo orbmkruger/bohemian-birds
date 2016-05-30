@@ -6,21 +6,20 @@ var map = L.mapbox.map("map", "mapbox.streets", {maxZoom: 7, minZoom: 2})
 
 // creates the scores 0 , 0.5 , 1
 var matchScore = function(props){
-  return 0.5;/*
   return Math.round(.2*(
 			props.beach*document.getElementById("wonders").checked +
-      props.beach*document.getElementById("wildlife").checked +
-      props.beach*document.getElementById("jungle").checked +
-      props.beach*document.getElementById("desert").checked +
-      props.beach*document.getElementById("islands").checked
+			props.horse*document.getElementById("wildlife").checked +
+			props.food*document.getElementById("jungle").checked +
+			props.budget*document.getElementById("desert").checked +
+			props.sailing*document.getElementById("islands").checked
 		) / (
-			document.getElementById("wonders").checked +
-      document.getElementById("wildlife").checked +
-      document.getElementById("jungle").checked +
-      document.getElementById("desert").checked +
-      document.getElementById("islands").checked
+      document.getElementById("wonders").checked +
+			document.getElementById("wildlife").checked +
+			document.getElementById("jungle").checked +
+			document.getElementById("desert").checked +
+			document.getElementById("islands").checked
 		)
-	)/2;*/
+	)/2;
 }
 
 function getColor(d){
@@ -68,7 +67,7 @@ $(document).ready(function(){
     geojson.eachLayer(function(layer){
     	layer.setStyle({
     		color: getColor(matchScore(layer.feature.properties)),
-			opacity: matchScore(layer.feature.properties)/2,
+			  opacity: matchScore(layer.feature.properties)/2,
     		fillOpacity: 1-matchScore(layer.feature.properties)
     	});
     });
