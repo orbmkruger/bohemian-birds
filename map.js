@@ -1,8 +1,3 @@
-// active bootstrap tooltip
-$(function () {
-  $("[data-toggle="tooltip"]").tooltip()
-})
-
 // build map
 L.mapbox.accessToken = "pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW1kZWZjamcwMDE5dnprazQ1Z2h1dGVzIn0.0xlYPtTK-38IqBKSl-NMnQ";
 
@@ -11,7 +6,8 @@ var map = L.mapbox.map("map", "mapbox.streets", {maxZoom: 7, minZoom: 2})
 
 // creates the scores 0 , 0.5 , 1
 var matchScore = function(props){
-	return Math.round(.2*(
+  return 0.5;/*
+  return Math.round(.2*(
 			props.beach*document.getElementById("wonders").checked +
       props.beach*document.getElementById("wildlife").checked +
       props.beach*document.getElementById("jungle").checked +
@@ -24,7 +20,7 @@ var matchScore = function(props){
       document.getElementById("desert").checked +
       document.getElementById("islands").checked
 		)
-	)/2;
+	)/2;*/
 }
 
 function getColor(d){
