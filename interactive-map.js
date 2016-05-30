@@ -7,13 +7,13 @@ var map = L.mapbox.map('map', 'mapbox.streets', {maxZoom: 7, minZoom: 2})
 // creates the scores 0 , 0.5 , 1
 var matchScore = function(props){
 	return Math.round(.2*(
-			props.beach*document.getElementById('beach').checked +
+			props.beach*document.getElementById('wonders').checked +
 			props.horse*document.getElementById('horse').checked +
 			props.food*document.getElementById('food').checked +
 			props.budget*document.getElementById('budget').checked +
 			props.sailing*document.getElementById('sailing').checked
 		) / (
-			document.getElementById('beach').checked +
+			document.getElementById('wonders').checked +
 			document.getElementById('horse').checked +
 			document.getElementById('food').checked +
 			document.getElementById('budget').checked +
