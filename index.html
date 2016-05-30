@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bohemian Birds - Interactive Map</title>
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- Font Awesome-->
+  <script src="https://use.fontawesome.com/975bae9b99.js"></script>
+  <!-- mapbox -->
+  <script src="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js"></script>
+  <link href="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" rel="stylesheet" />
+  <!-- interactive map input-->
+  <script type="text/javascript" src="countries_withcolors.js"></script>
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="form">
+   	<input type="checkbox" class="bucketlist" id="beach">Beach
+   	<input type="checkbox" class="bucketlist" id="horse">Horse riding
+   	<input type="checkbox" class="bucketlist" id="food">Food lovers
+   	<input type="checkbox" class="bucketlist" id="budget">Low-budget
+   	<input type="checkbox" class="bucketlist" id="sailing">Sailing
+  </div>
+  <div id="map"></div>
+  <div id="info"></div>
+  </div>
+<script type="text/javascript" src="interactive-map.js"></script>
+</body>
+</html>
