@@ -1,32 +1,32 @@
 // build map
-L.mapbox.accessToken = 'pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW1kZWZjamcwMDE5dnprazQ1Z2h1dGVzIn0.0xlYPtTK-38IqBKSl-NMnQ';
+L.mapbox.accessToken = "pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW1kZWZjamcwMDE5dnprazQ1Z2h1dGVzIn0.0xlYPtTK-38IqBKSl-NMnQ";
 
-var map = L.mapbox.map('map', 'mapbox.streets', {maxZoom: 7, minZoom: 2})
+var map = L.mapbox.map("map", "mapbox.streets", {maxZoom: 7, minZoom: 2})
     .setView([0, 0], 2);
 
 // creates the scores 0 , 0.5 , 1
 var matchScore = function(props){
 	return Math.round(.2*(
-			props.beach*document.getElementById('wonders').checked +
-			props.horse*document.getElementById('horse').checked +
-			props.food*document.getElementById('food').checked +
-			props.budget*document.getElementById('budget').checked +
-			props.sailing*document.getElementById('sailing').checked
+			props.beach*document.getElementById("wonders").checked +
+			props.horse*document.getElementById("horse").checked +
+			props.food*document.getElementById("food").checked +
+			props.budget*document.getElementById("budget").checked +
+			props.sailing*document.getElementById("sailing").checked
 		) / (
-			document.getElementById('wonders').checked +
-			document.getElementById('horse').checked +
-			document.getElementById('food').checked +
-			document.getElementById('budget').checked +
-			document.getElementById('sailing').checked
+			document.getElementById("wonders").checked +
+			document.getElementById("horse").checked +
+			document.getElementById("food").checked +
+			document.getElementById("budget").checked +
+			document.getElementById("sailing").checked
 		)
 	)/2;
 }
 
 function getColor(d){
-    return d == 1   ? 'green' :
-           d == 0.5 ? 'orange' :
-           d == 0 ? 'red' :
-           'black';
+    return d == 1   ? "green" :
+           d == 0.5 ? "orange" :
+           d == 0 ? "red" :
+           "black";
 }
 
 geojson = L.geoJson(statesData,{
@@ -35,7 +35,7 @@ geojson = L.geoJson(statesData,{
 			color: getColor(matchScore(feature.properties)),
 			opacity: matchScore(feature.properties)/2,
 			weight: 3,
-			fillColor: 'grey',
+			fillColor: "grey",
 			fillOpacity: 1-matchScore(feature.properties)
 		}
 	},
@@ -51,11 +51,11 @@ function onEachFeature(feature, layer) {
 }
 
 function highlightFeature(e){
-	document.getElementById('info').innerHTML = feature.properties.name;
+	document.getElementById("info").innerHTML = feature.properties.name;
 }
 
 function resetHighlight(e){
-	document.getElementById('info').innerHTML = feature.properties.name;
+	document.getElementById("info").innerHTML = feature.properties.name;
 }
 
 function zoomToFeature(e) {
@@ -63,7 +63,7 @@ function zoomToFeature(e) {
 }
 
 $(document).ready(function(){
-  $('.bucketlist').change(function(){
+  $(".bucketlist").change(function(){
     geojson.eachLayer(function(layer){
     	layer.setStyle({
     		color: getColor(matchScore(layer.feature.properties)),
