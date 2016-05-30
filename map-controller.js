@@ -75,17 +75,17 @@ var matchScore = function(props){
 	)/2;
 }
 
-function getColor(d){
+function getBorderColor(d){
     return d == 1   ? "green" :
            d == 0.5 ? "orange" :
            d == 0 ? "red" :
-           "black";
+           "grey";
 }
 
 geojson = L.geoJson(statesData,{
 	style: function (feature) {
 		return {
-			color: getColor(matchScore(feature.properties)),
+			color: getBorderColor(matchScore(feature.properties)),
 			opacity: matchScore(feature.properties)/2,
 			weight: 3,
 			fillColor: "grey",
@@ -118,11 +118,11 @@ function zoomToFeature(e) {
 $(document).ready(function(){
   $(".bucketlist").change(function(){
     geojson.eachLayer(function(layer){
-    	layer.setStyle({
-    		color: getColor(matchScore(layer.feature.properties)),
-			opacity: matchScore(layer.feature.properties)/2,
-    		fillOpacity: 1-matchScore(layer.feature.properties)
-    	});
+      layer.setStyle({
+        color: getBorderColor(matchScore(layer.feature.properties)),
+        opacity: matchScore(layer.feature.properties)/2,
+        fillOpacity: 1-matchScore(layer.feature.properties)
+      });
     });
   });
 });
