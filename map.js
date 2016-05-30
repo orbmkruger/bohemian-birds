@@ -3,28 +3,6 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-// add toggle element
-$(".btn-primary.nature").click(function(){
-	$(".btn-default").addClass("hidden");
-	$(".btn-default.nature").toggleClass("hidden");
-});
-$(".btn-primary.unwind").click(function(){
-	$(".btn-default").addClass("hidden");
-	$(".btn-default.unwind").toggleClass("hidden");
-});
-$(".btn-primary.adrenalin").click(function(){
-	$(".btn-default").addClass("hidden");
-	$(".btn-default.adrenalin").toggleClass("hidden");
-});
-$(".btn-primary.culture").click(function(){
-	$(".btn-default").addClass("hidden");
-	$(".btn-default.culture").toggleClass("hidden");
-});
-$(".btn-primary.social").click(function(){
-	$(".btn-default").addClass("hidden");
-	$(".btn-default.social").toggleClass("hidden");
-});
-
 // build map
 L.mapbox.accessToken = 'pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW1kZWZjamcwMDE5dnprazQ1Z2h1dGVzIn0.0xlYPtTK-38IqBKSl-NMnQ';
 
@@ -33,7 +11,8 @@ var map = L.mapbox.map('map', 'mapbox.streets', {maxZoom: 7, minZoom: 2})
 
 // creates the scores 0 , 0.5 , 1
 var matchScore = function(props){
-	return Math.round(.2*(
+	return 0.5;
+	/*return Math.round(.2*(
 			props.beach*document.getElementById('beach').checked +
 			props.horse*document.getElementById('horse').checked +
 			props.food*document.getElementById('food').checked +
@@ -46,9 +25,8 @@ var matchScore = function(props){
 			document.getElementById('budget').checked +
 			document.getElementById('sailing').checked
 		)
-	)/2;
+	)/2;*/
 }
-*/
 
 function getColor(d){
     return d == 1   ? 'green' :
@@ -90,17 +68,14 @@ function zoomToFeature(e) {
 	map.fitBounds(e.target.getBounds());
 }
 
-/* disable triggering buttons
 $(document).ready(function(){
-	$('.bucketlist').change(function(){
-		geojson.eachLayer(function(layer){
-			layer.setStyle({
-				color: getColor(matchScore(layer.feature.properties)),
-				opacity: matchScore(layer.feature.properties)/2,
-				fillOpacity: 1-matchScore(layer.feature.properties)
-			});
-		});
-	});
-}); */
-// add markers to map
-// var featureLayer = L.mapbox.featureLayer().loadURL('/mapbox.js/assets/data/example-single.geojson').addTo(map);
+  $('.bucketlist').change(function(){
+    geojson.eachLayer(function(layer){
+    	layer.setStyle({
+    		color: getColor(matchScore(layer.feature.properties)),
+			opacity: matchScore(layer.feature.properties)/2,
+    		fillOpacity: 1-matchScore(layer.feature.properties)
+    	});
+    });
+  });
+});

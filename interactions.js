@@ -1,0 +1,23 @@
+// add toggle element
+$(document).ready(function(){
+	$(".btn-primary.nature").click(function(){
+		$(".btn-default").addClass("hidden");
+		$(".btn-default.nature").removeClass("hidden");
+	});
+	$(".btn-primary.unwind").click(function(){
+		$(".btn-default").addClass("hidden");
+		$(".btn-default.unwind").removeClass("hidden");
+	});
+	$(".btn-primary.adrenalin").click(function(){
+		$(".btn-default").addClass("hidden");
+		$(".btn-default.adrenalin").removeClass("hidden");
+	});
+	$(".btn-primary.culture").click(function(){
+		$(".btn-default").addClass("hidden");
+		$(".btn-default.culture").removeClass("hidden");
+	});
+	$(".btn-primary.social").click(function(){
+		$(".btn-default").addClass("hidden");
+		$(".btn-default.social").removeClass("hidden");
+	});
+});
