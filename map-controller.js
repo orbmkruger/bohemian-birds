@@ -82,7 +82,7 @@ function getBorderColor(d){
            "grey";
 }
 
-geojson = L.geoJson(statesData,{
+geojson = L.geoJson(countriesData,{
 	style: function (feature) {
 		return {
 			color: getBorderColor(matchScore(feature.properties)),
@@ -94,6 +94,8 @@ geojson = L.geoJson(statesData,{
 	},
 	onEachFeature: onEachFeature
 }).addTo(map);
+
+featureLayer = L.mapbox.featureLayer(activitiesData).addTo(map);
 
 function onEachFeature(feature, layer) {
 	layer.on({
