@@ -1,6 +1,5 @@
 // build map
 L.mapbox.accessToken = "pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW1kZWZjamcwMDE5dnprazQ1Z2h1dGVzIn0.0xlYPtTK-38IqBKSl-NMnQ";
-
 var map = L.mapbox.map("map", "mapbox.streets", {maxZoom: 7, minZoom: 2})
     .setView([0, 0], 2);
 
@@ -83,7 +82,7 @@ function getBorderColor(d){
 }
 
 
-var countriesLayer = L.mapbox.featureLayer(countriesData,{
+var countriesLayer = L.geoJson(countriesData,{
   style: function (feature) {
 		return {
 			color: getBorderColor(matchScore(feature.properties)),
