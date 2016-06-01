@@ -82,8 +82,9 @@ function getBorderColor(d){
            "grey";
 }
 
-countriesLayer = L.geoJson(countriesData,{
-	style: function (feature) {
+
+var countriesLayer = L.mapbox.featureLayer(countriesData,{
+  style: function (feature) {
 		return {
 			color: getBorderColor(matchScore(feature.properties)),
 			opacity: matchScore(feature.properties)/2,
@@ -95,11 +96,8 @@ countriesLayer = L.geoJson(countriesData,{
 	onEachFeature: onEachFeature
 }).addTo(map);
 
-var greenIcon = L.icon({
-    iconUrl: 'leaf-green.png',
-});
-
-activitiesLayer = L.geoJson(activitiesData,{
+// add activities icons to map
+var activitiesLayer = L.geoJson(activitiesData,{
   onEachFeature: function (featureData, layer) {
     layer.bindPopup(featureData.properties.title);
     if (featureData.properties.activity === "wonders") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Cultures/pyramids-24.png"}));
@@ -135,6 +133,9 @@ activitiesLayer = L.geoJson(activitiesData,{
     } else if (featureData.properties.activity === "festival") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/City/park_concert_shell-24.png"}));
     } else {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Very_Basic/cancel_2-24.png"}));
     }
+  },
+  filter: function (feature, layer) {
+    return false;
   }
 }).addTo(map);
 
@@ -156,6 +157,7 @@ function resetHighlight(e){
 
 function zoomToFeature(e) {
 	map.fitBounds(e.target.getBounds());
+  activitiesLayer.filter(0);
 }
 
 $(document).ready(function(){
