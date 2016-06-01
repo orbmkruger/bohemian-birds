@@ -82,7 +82,7 @@ function getBorderColor(d){
            "grey";
 }
 
-geojson = L.geoJson(countriesData,{
+countriesLayer = L.geoJson(countriesData,{
 	style: function (feature) {
 		return {
 			color: getBorderColor(matchScore(feature.properties)),
@@ -95,7 +95,48 @@ geojson = L.geoJson(countriesData,{
 	onEachFeature: onEachFeature
 }).addTo(map);
 
-featureLayer = L.mapbox.featureLayer(activitiesData).addTo(map);
+var greenIcon = L.icon({
+    iconUrl: 'leaf-green.png',
+});
+
+activitiesLayer = L.geoJson(activitiesData,{
+  onEachFeature: function (featureData, layer) {
+    layer.bindPopup(featureData.properties.title);
+    if (featureData.properties.activity === "wonders") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Cultures/pyramids-24.png"}));
+    } else if (featureData.properties.activity === "wildlife") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Animals/cat_footprint-24.png"}));
+    } else if (featureData.properties.activity === "jungle") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Travel/waterfall-24.png"}));
+    } else if (featureData.properties.activity === "desert") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Cinema/western-24.png"}));
+    } else if (featureData.properties.activity === "islands") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Maps/treasure_map-24.png"}));
+    } else if (featureData.properties.activity === "winter") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Astrology/winter-24.png"}));
+    } else if (featureData.properties.activity === "eco") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Food/natural_food-24.png"}));
+    } else if (featureData.properties.activity === "mountains") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Astrology/earth_element-24.png"}));
+    } else if (featureData.properties.activity === "landscape") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Photo_Video/landscape-24.png"}));
+    } else if (featureData.properties.activity === "wellness") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Beauty/stones-24.png"}));
+    } else if (featureData.properties.activity === "golfing") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Sports/golf-24.png"}));
+    } else if (featureData.properties.activity === "fishing") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Sports/fishing-24.png"}));
+    } else if (featureData.properties.activity === "beach") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Travel/beach-24.png"}));
+    } else if (featureData.properties.activity === "villa") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Household/bungalow-24.png"}));
+    } else if (featureData.properties.activity === "zipline") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Travel/zipline-24.png"}));
+    } else if (featureData.properties.activity === "rafting") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Sports/paddling-24.png"}));
+    } else if (featureData.properties.activity === "parachute") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Sports/paragliding-24.png"}));
+    } else if (featureData.properties.activity === "biking") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Sports/mountain_biking-24.png"}));
+    } else if (featureData.properties.activity === "watersport") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Sports/in_sea-24.png"}));
+    } else if (featureData.properties.activity === "scuba") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Animals/fish-24.png"}));
+    } else if (featureData.properties.activity === "speed") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Transport/speedometer-24.png"}));
+    } else if (featureData.properties.activity === "bungee") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Sports/bungee_jumping-24.png"}));
+    } else if (featureData.properties.activity === "history") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Cultures/chichen_itza-24.png"}));
+    } else if (featureData.properties.activity === "unesco") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Business/library-24.png"}));
+    } else if (featureData.properties.activity === "food") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Food/food_and_wine-24.png"}));
+    } else if (featureData.properties.activity === "museum") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Cultures/magritte-24.png"}));
+    } else if (featureData.properties.activity === "architecture") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Cultures/sagrada_familia-24.png"}));
+    } else if (featureData.properties.activity === "locals") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Cultures/geisha-24.png"}));
+    } else if (featureData.properties.activity === "nightlife") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Music/DJ-24.png"}));
+    } else if (featureData.properties.activity === "bbirds") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Animals/bird-24.png"}));
+    } else if (featureData.properties.activity === "festival") {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/City/park_concert_shell-24.png"}));
+    } else {layer.setIcon(L.icon({iconUrl: "https://maxcdn.icons8.com/Color/PNG/24/Very_Basic/cancel_2-24.png"}));
+    }
+  }
+}).addTo(map);
 
 function onEachFeature(feature, layer) {
 	layer.on({
@@ -119,7 +160,7 @@ function zoomToFeature(e) {
 
 $(document).ready(function(){
   $(".bucketlist").change(function(){
-    geojson.eachLayer(function(layer){
+    countriesLayer.eachLayer(function(layer){
       layer.setStyle({
         color: getBorderColor(matchScore(layer.feature.properties)),
         opacity: matchScore(layer.feature.properties)/2,
