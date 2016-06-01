@@ -135,7 +135,7 @@ var activitiesLayer = L.geoJson(activitiesData,{
     }
   },
   filter: function (feature, layer) {
-    return false;
+    return true;
   }
 }).addTo(map);
 
