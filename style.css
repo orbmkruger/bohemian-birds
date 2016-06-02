@@ -7,15 +7,18 @@ html, body{
 #form{
 }
 #map{
-  height: 500px;
+  position: absolute;
+  top: 250px;
+  bottom: 0px;
   width: 100%;
 }
 #info{
   position: absolute;
-  bottom: 0;
-  width: 100%;
+  top: 250px;
+  bottom: 0px;
+  right: 0px;
+  width: 25%;
   background: white;
-  height: 100px;
   z-index: 999;
-  opacity: 0.5;
+  opacity: 0.33;
 }
