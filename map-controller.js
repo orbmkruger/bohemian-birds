@@ -87,14 +87,7 @@ var countriesLayer = L.geoJson(countriesData,{
 });
 
 // create activities layer
-var activitiesLayer = L.mapbox.featureLayer(activitiesData)
-.eachLayer(function(marker){
-	marker.setIcon(L.mapbox.marker.icon({
-		"marker-color":"#A52A2A",
-		"marker-symbol":"star",
-		"marker-size":"small"
-	}));
-});
+var activitiesLayer = L.mapbox.featureLayer(activitiesData);
 
 function onEachFeature(feature, layer) {
 	layer.on({
@@ -105,7 +98,6 @@ function onEachFeature(feature, layer) {
 }
 
 function highlightFeature(e){
-	document.getElementById("info").innerHTML = feature.properties.name;
 }
 
 function resetHighlight(e){
@@ -114,7 +106,16 @@ function resetHighlight(e){
 
 function zoomToFeature(e) {
 	map.fitBounds(e.target.getBounds());
-	activitiesLayer.addTo(map);
+	activitiesLayer.setFilter(function (){
+		return true;
+	})
+	.eachLayer(function(marker){
+		marker.setIcon(L.mapbox.marker.icon({
+			"marker-color":"#A52A2A",
+			"marker-symbol":"star",
+			"marker-size":"small"
+		}));
+	}).addTo(map);
 	// filter activities from selected country
 	countriesLayer.eachLayer(function(layer){
 		layer.setStyle({
@@ -127,6 +128,9 @@ function zoomToFeature(e) {
 // actions based on bucketlist
 $(document).ready(function(){
   $(".bucketlist").change(function(){
+		var category = $(this).attr("id");
+		alert("bucketlist " + category + " clicked");
+		// mixpanel.track("test");
 		map.setView([0,0],2);
 		map.removeLayer(activitiesLayer);
 		if (map.hasLayer(countriesLayer) == false) {
