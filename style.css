@@ -1,37 +1,52 @@
-html, body{
+html, body {
   font-family: 'Rock Salt', cursive;
-  color: night;
   background-color: AntiqueWhite;
 }
-.container {
-  border-left: solid Red 2px;
+#scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow: scroll;
 }
 #form {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+}
+h1 {
+  -webkit-column-span: all; /* Chrome, Safari, Opera */
+  column-span: all;
+}
+.category {
+  cursor: auto;
 }
 label {
   cursor: pointer;
   display: block;
-  border-bottom: solid MidnightBlue 2px;
-}
-.title {
-  cursor: auto;
 }
 input[type=checkbox] {
   display: none;
 }
-input[type=checkbox]:checked + span {
+input[type=checkbox] + span {
   text-decoration: line-through;
   color: grey;
+  filter: grayscale();
 }
-#map{
-  height: 600px;
-  width: 100%;
+input[type=checkbox]:checked + span {
+  text-decoration: none;
+  color: black;
+  filter: none;
 }
-#info{
-  background-color: white;
-  width: 100px;
-  height: 50px;
-  top: 0px;
-  right: 0px;
+img {
+  height: 24px;
+  width: 24px;
+}
+#map {
   position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
 }
