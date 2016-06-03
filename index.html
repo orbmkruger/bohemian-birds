@@ -7,10 +7,6 @@
   mixpanel.init("00fabc662ffb5ff59bc98b798c21601f");</script><!-- end Mixpanel -->
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <!-- Google font-->
   <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
   <!-- mapbox -->
@@ -23,142 +19,139 @@
 </head>
 
 <body>
-<div class="container">
-  <h1>What is on your bucketlist?</h1>
   <div id="form">
-    <label class="title col-xs-12 col-sm-6 col-md-4 col-lg-3">Adventure</label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <h1>What is on your bucketlist?</h1>
+    <label class="category">Adventure</label>
+    <label>
       <input type="checkbox" class="bucketlist" id="wonders">
-      <span>1. be amazed by mother nature</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/waterfall-24.png"> be amazed by mother nature</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="wildlife">
-      <span>2. visit the animal kingdom</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/cat_footprint-24.png"> visit the animal kingdom</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="jungle">
-      <span>3. survive in the jungle</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/gorilla-24.png"> survive in the jungle</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="desert">
-      <span>4. survive in the desert</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Cinema/western-24.png"> survive in the desert</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="islands">
-      <span>5. hop islands</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/beach-24.png"> hop islands</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="winter">
-      <span>6. winter</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Astrology/winter-24.png"> winter</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="eco">
-      <span>7. eco</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Food/natural_food-24.png"> eco</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="mountains">
-      <span>8. be on top of the world</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Astrology/earth_element-24.png"> be on top of the world</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="landscape">
-      <span>9. Landscape</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Photo_Video/landscape-24.png"> Landscape</span>
     </label>
-    <label class="title col-xs-12 col-sm-6 col-md-4 col-lg-3">Unwind</label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label class="category">Unwind</label>
+    <label>
       <input type="checkbox" class="bucketlist" id="wellness">
-      <span>10. be spoiled</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Beauty/stones-24.png"> be spoiled</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="golfing">
-      <span>11. hit a hole in one</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Sports/golf-24.png"> hit a hole in one</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="fishing">
-      <span>12. Fishing</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Sports/fishing-24.png"> Fishing</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="beach">
-      <span>13. Beach</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Clothing/flip_flops-24.png"> Beach</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="villa">
-      <span>14. sleep millionaire</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Household/bungalow-24.png"> sleep like a millionair</span>
     </label>
-    <label class="title col-xs-12 col-sm-6 col-md-4 col-lg-3">Adrelina</label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label class="category">Adrelina</label>
+    <label>
       <input type="checkbox" class="bucketlist" id="zipline">
-      <span>15. fly down a zipline</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/zipline-24.png"> fly down a zipline</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="rafting">
-      <span>16. Rafting</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Sports/paddling-24.png"> Rafting</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="parachute">
-      <span>17. Parachute</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Sports/paragliding-24.png"> Parachute</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="biking">
-      <span>18. Biking</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Sports/mountain_biking-24.png"> Biking</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="watersport">
-      <span>19. Watersport</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Sports/in_sea-24.png"> Watersport</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="scuba">
-      <span>20. find nemo</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/fish-24.png"> find nemo</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="speed">
-      <span>21. Speed</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Transport/speedometer-24.png"> Speed</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="bungee">
-      <span>22. Bungee</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Sports/bungee_jumping-24.png"> Bungee</span>
     </label>
-    <label class="title col-xs-12 col-sm-6 col-md-4 col-lg-3">Culture</label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label class="category">Culture</label>
+    <label>
       <input type="checkbox" class="bucketlist" id="history">
-      <span>23. history</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Cultures/chichen_itza-24.png"> history</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="unesco">
-      <span>24. Unesco</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Business/library-24.png"> Unesco</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="food">
-      <span>25. Food</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Cultures/chili_pepper-24.png"> Food</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="museum">
-      <span>26. Museum</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Cultures/magritte-24.png"> Museum</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="architecture">
-      <span>27. architecture</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Cultures/sagrada_familia-24.png"> architecture</span>
     </label>
-    <label class="title col-xs-12 col-sm-6 col-md-4 col-lg-3">Social</label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label class="category">Social</label>
+    <label>
       <input type="checkbox" class="bucketlist" id="locals">
-      <span>28. Locals</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Cultures/geisha-24.png"> Locals</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="nightlife">
-      <span>29. Nightlife</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Music/DJ-24.png"> Nightlife</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="bbirds">
-      <span>30. Bohemian Birds specials</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/bird-24.png"> Bohemian Birds specials</span>
     </label>
-    <label class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <label>
       <input type="checkbox" class="bucketlist" id="festival">
-      <span>31. be part of the worlds biggest festival</span>
+      <span><img src="https://maxcdn.icons8.com/Color/PNG/24/City/park_concert_shell-24.png"> be part of the worlds biggest festival</span>
     </label>
   </div>
   <div id="map"></div>
-  <div id="info"></div>
-</div>
 <script type="text/javascript" src="bucketlist-controller.js"></script>
 <script type="text/javascript" src="map-controller.js"></script>
 </body>
