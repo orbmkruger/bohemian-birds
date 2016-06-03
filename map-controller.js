@@ -129,7 +129,6 @@ function zoomToFeature(e) {
 $(document).ready(function(){
   $(".bucketlist").change(function(){
 		var category = $(this).attr("id");
-		alert("bucketlist " + category + " clicked");
 		// mixpanel.track("test");
 		map.setView([0,0],2);
 		map.removeLayer(activitiesLayer);

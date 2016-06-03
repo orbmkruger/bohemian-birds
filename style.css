@@ -1,24 +1,52 @@
-html, body{
-  margin:0;
-  padding:0;
+html, body {
   font-family: 'Rock Salt', cursive;
-  font-size: ;
+  background-color: AntiqueWhite;
 }
-#form{
-}
-#map{
-  position: absolute;
-  top: 250px;
-  bottom: 0px;
+#scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 50%;
+  overflow: scroll;
 }
-#info{
-  position: absolute;
-  top: 250px;
-  bottom: 0px;
-  right: 0px;
-  width: 25%;
-  background: white;
-  z-index: 999;
-  opacity: 0.33;
+#form {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+}
+h1 {
+  -webkit-column-span: all; /* Chrome, Safari, Opera */
+  column-span: all;
+}
+.category {
+  cursor: auto;
+}
+label {
+  cursor: pointer;
+  display: block;
+}
+input[type=checkbox] {
+  display: none;
+}
+input[type=checkbox] + span {
+  text-decoration: line-through;
+  color: grey;
+  filter: grayscale();
+}
+input[type=checkbox]:checked + span {
+  text-decoration: none;
+  color: black;
+  filter: none;
+}
+img {
+  height: 24px;
+  width: 24px;
+}
+#map {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
 }
