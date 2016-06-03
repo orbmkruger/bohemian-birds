@@ -3,14 +3,18 @@ html, body{
   color: night;
   background-color: AntiqueWhite;
 }
+.container {
+  border-left: solid Red 2px;
+}
 #form {
-  -webkit-column-count: 3;
-  -moz-column-count: 3;
-  column-count: 3;
 }
 label {
-  display: block;
   cursor: pointer;
+  display: block;
+  border-bottom: solid MidnightBlue 2px;
+}
+.title {
+  cursor: auto;
 }
 input[type=checkbox] {
   display: none;
@@ -20,8 +24,14 @@ input[type=checkbox]:checked + span {
   color: grey;
 }
 #map{
-  height: 800px;
+  height: 600px;
   width: 100%;
 }
 #info{
+  background-color: white;
+  width: 100px;
+  height: 50px;
+  top: 0px;
+  right: 0px;
+  position: fixed;
 }
