@@ -1,0 +1,60 @@
+html, body {
+  font-family: 'Rock Salt', cursive;
+  font-size: 10px;
+  background-color: AntiqueWhite;
+}
+[class*='col-'] {
+    padding-right:0px;
+    padding-left:0px;
+    border-bottom: solid black 1px;
+}
+#container {
+  position: absolute;
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+  margin: 10px;
+}
+#form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 10px);
+  height: 50%;
+  border-left: solid red 1px;
+}
+h1{
+  text-align: center;
+  font-size: 200%;
+}
+.category {
+  cursor: auto;
+  display: block;
+}
+label {
+  cursor: pointer;
+  padding: 0px;
+}
+input[type=checkbox] {
+  display: none;
+}
+input[type=checkbox] + span {
+  text-decoration: line-through;
+  color: grey;
+  filter: grayscale();
+}
+input[type=checkbox]:checked + span {
+  text-decoration: none;
+  color: black;
+  filter: none;
+}
+img {
+  height: 10px;
+  width: 10px;
+}
+#map {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+}
