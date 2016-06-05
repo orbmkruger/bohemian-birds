@@ -1,7 +1,7 @@
 // Provide your access token on mapbox.com
 L.mapbox.accessToken = "pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW94ZWc2bXowMGJzdmttMjF3aXlneGhtIn0.scl7vK6Iddx5vX27IB9U1A";
 // Create a map in the div #map
-var map = L.mapbox.map("map", "mapbox.streets", {maxZoom: 7, minZoom: 2}).setView([28,0],2);
+var map = L.mapbox.map("map", "mapbox.streets", {maxZoom: 7, minZoom: 1}).setView([28,0],1);
 // Create popup
 var popup = new L.Popup({ autoPan: false });
 // mixpanel.track("map viewed");
@@ -108,7 +108,7 @@ function onEachFeature(feature, layer) {
 var closeTooltip;
 
 function mousemove(e){
-	if (map.getZoom() == 2) {
+	if (map.getZoom() <= 2) {
 		var layer = e.target;
 	  popup.setLatLng(e.latlng);
 	  popup.setContent("<div class='marker-title'>" +
@@ -128,7 +128,7 @@ function mousemove(e){
 }
 
 function mouseout(e){
-	if (map.getZoom() == 2) {
+	if (map.getZoom() <= 2) {
 		var layer = e.target;
 		layer.setStyle({
 				weight: 1,
@@ -177,7 +177,7 @@ $(document).ready(function(){
 		if ($(this).is(":checked")) {
 			// mixpanel.track($category);
 		}
-		map.setView([28,0],2);
+		map.setView([28,0],1);
 		map.removeLayer(activitiesLayer);
 		if (map.hasLayer(countriesLayer) == false) {
 			countriesLayer.addTo(map);

@@ -1,26 +1,21 @@
-html, body {
+body {
   font-family: 'Rock Salt', cursive;
   font-size: 10px;
   color: #2d2d2c;
   background-color: AntiqueWhite;
+  background-image: url("notepad.jpg");
 }
 [class*='col-'] {
   padding-right:0px;
   padding-left:0px;
   border-bottom: solid black 1px;
 }
-#container {
-  position: absolute;
-  height: calc(100% - 10px);
-  width: calc(100% - 10px);
-  margin: 10px;
-}
 #form {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  height: calc(50% - 5px);
   width: calc(100% - 10px);
-  height: 50%;
   border-left: solid red 1px;
 }
 h1{
@@ -32,6 +27,7 @@ h1{
   display: block;
 }
 label {
+  font-size: 12px;
   cursor: pointer;
   padding: 0px;
 }
@@ -49,15 +45,16 @@ input[type=checkbox]:checked + span {
   filter: none;
 }
 img {
-  height: 10px;
-  width: 10px;
+  height: 12px;
+  width: 12px;
 }
 #map {
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: 0;
+  left: 5px;
   width: calc(100% - 10px);
-  height: calc(100% - 10px);
+  height: calc(50% - 5px);
+  border-style: double;
 }
 .leaflet-popup-close-button {
   display: none;
