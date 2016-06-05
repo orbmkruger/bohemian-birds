@@ -3,7 +3,6 @@ body {
   font-size: 10px;
   color: #2d2d2c;
   background-color: AntiqueWhite;
-  background-image: url("notepad.jpg");
 }
 [class*='col-'] {
   padding-right:0px;
@@ -16,7 +15,7 @@ body {
   left: 5px;
   height: calc(50% - 5px);
   width: calc(100% - 10px);
-  border-left: solid red 1px;
+  border-left: solid red 2px;
 }
 h1{
   text-align: center;
