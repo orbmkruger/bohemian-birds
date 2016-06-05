@@ -1,9 +1,14 @@
 // Provide your access token on mapbox.com
 L.mapbox.accessToken = "pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW94ZWc2bXowMGJzdmttMjF3aXlneGhtIn0.scl7vK6Iddx5vX27IB9U1A";
 // Create a map in the div #map
-var map = L.mapbox.map("map", "mapbox.streets", {maxZoom: 7, minZoom: 1}).setView([28,0],1);
+var map = L.mapbox.map("map", "mapbox.streets",{
+		minZoom: 2,
+		maxZoom: 7,
+		maxBounds: [[90,-180],[-90,180]]
+}).fitBounds([[65,0],[-25,60]]);
 // Create popup
 var popup = new L.Popup({ autoPan: false });
+// Send mixpanel
 // mixpanel.track("map viewed");
 
 // creates the scores 0 , 0.5 , 1
@@ -55,7 +60,7 @@ function getBorderColor(d){
 
 function getRecommendation(d){
 	return d == 1   ? "Great choice to empty<br>your bucketlist!" :
-	       d == 0.5 ? "Sure you want to go here?" :
+	       d == 0.5 ? "Poor match, but happy to help!" :
 				 "Sorry mate, no opportunity to empty<br>your bucketlist here";
 }
 
@@ -88,7 +93,7 @@ function onEachFeature(feature, layer) {
 var closeTooltip;
 
 function mousemove(e){
-	if (map.getZoom() <= 2) {
+	if (map.getZoom() <= 3) {
 		var layer = e.target;
 	  popup.setLatLng(e.latlng);
 	  popup.setContent("<div class='marker-title'>" +
@@ -111,7 +116,7 @@ function mousemove(e){
 }
 
 function mouseout(e){
-	if (map.getZoom() <= 2) {
+	if (map.getZoom() <= 3) {
 		var layer = e.target;
 		layer.setStyle({
 				weight: 1,
@@ -160,7 +165,7 @@ $(document).ready(function(){
 		if ($(this).is(":checked")) {
 			// mixpanel.track($category);
 		}
-		map.setView([28,0],1);
+		map.fitBounds([[65,0],[-25,60]]);
 		map.removeLayer(activitiesLayer);
 		if (map.hasLayer(countriesLayer) == false) {
 			countriesLayer.addTo(map);
