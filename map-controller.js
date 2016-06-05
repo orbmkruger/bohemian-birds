@@ -73,9 +73,9 @@ function getBorderColor(d){
 }
 
 function getRecommendation(d){
-	return d == 1   ? "great choice! Click view the activities." :
-	       d == 0.5 ? "Poor match, but happy to help!" :
-				 "Sorry mate, no opportunity to empty<br>your bucketlist here";
+	return d == 1   ? "great choice! Click to view the activities." :
+	       d == 0.5 ? "poor match, but happy to help!" :
+				 "has no opportunity to empty your selected bucketlist";
 }
 
 function getStars(d){
@@ -180,6 +180,11 @@ $(document).ready(function(){
 		map.removeLayer(activitiesLayer);
 		if (map.hasLayer(countriesLayer) == false) {
 			countriesLayer.addTo(map);
+		}
+		if ($(this).is(":checked")) {
+			$(this).next().css("visibility","visible");
+		} else {
+			$(this).next().css("visibility","hidden");
 		}
 		if ($(".bucketlist:checked").length == 0 ) {
 			$("#info").html(firstStep);

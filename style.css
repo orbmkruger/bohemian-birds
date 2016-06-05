@@ -69,6 +69,7 @@ h1 {
   font-size: 150%;
 }
 .category {
+  font-weight: 800;
   cursor: auto;
 }
 label {
@@ -84,15 +85,18 @@ label {
 input[type=checkbox] {
   display: none;
 }
-input[type=checkbox] + span {
-  text-decoration: line-through;
+input[type=checkbox] + span + span {
   color: grey;
-  filter: grayscale();
 }
-input[type=checkbox]:checked + span {
-  text-decoration: none;
+input[type=checkbox]:checked + span + span {
   color: #2d2d2c;
   filter: none;
+}
+.checkmark {
+  visibility: hidden;
+}
+.tooltip {
+  z-index: 999;
 }
 #bucketlist > img {
   height: 100%;
