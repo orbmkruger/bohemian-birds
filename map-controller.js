@@ -9,84 +9,64 @@ var popup = new L.Popup({ autoPan: false });
 // creates the scores 0 , 0.5 , 1
 var matchScore = function(props){
 	return Math.round(
-    .2*(
-			props.wonders*document.getElementById("wonders").checked +
-      props.wildlife*document.getElementById("wildlife").checked +
-      props.jungle*document.getElementById("jungle").checked +
-      props.desert*document.getElementById("desert").checked +
-      props.islands*document.getElementById("islands").checked +
-      props.winter*document.getElementById("winter").checked +
-      props.eco*document.getElementById("eco").checked +
-      props.mountains*document.getElementById("mountains").checked +
-      props.landscape*document.getElementById("landscape").checked +
-      props.wellness*document.getElementById("wellness").checked +
-      props.golfing*document.getElementById("golfing").checked +
-      props.fishing*document.getElementById("fishing").checked +
-      props.beach*document.getElementById("beach").checked +
-      props.villa*document.getElementById("villa").checked +
-      props.zipline*document.getElementById("zipline").checked +
-      props.rafting*document.getElementById("rafting").checked +
-      props.parachute*document.getElementById("parachute").checked +
-      props.biking*document.getElementById("biking").checked +
-      props.watersport*document.getElementById("watersport").checked +
-      props.scuba*document.getElementById("scuba").checked +
-      props.speed*document.getElementById("speed").checked +
-      props.bungee*document.getElementById("bungee").checked +
-      props.history*document.getElementById("history").checked +
-      props.unesco*document.getElementById("unesco").checked +
-      props.food*document.getElementById("food").checked +
-      props.museum*document.getElementById("museum").checked +
-      props.architecture*document.getElementById("architecture").checked +
-      props.locals*document.getElementById("locals").checked +
-      props.nightlife*document.getElementById("nightlife").checked +
-      props.bbirds*document.getElementById("bbirds").checked +
-      props.festival*document.getElementById("festival").checked
+    .2 * (
+			props.wonders * document.getElementById("wonders").checked +
+      props.wildlife * document.getElementById("wildlife").checked +
+      props.jungle * document.getElementById("jungle").checked +
+      props.desert * document.getElementById("desert").checked +
+      props.islands * document.getElementById("islands").checked +
+      props.winter * document.getElementById("winter").checked +
+      props.eco * document.getElementById("eco").checked +
+      props.mountains * document.getElementById("mountains").checked +
+      props.landscape * document.getElementById("landscape").checked +
+      props.wellness * document.getElementById("wellness").checked +
+      props.golfing * document.getElementById("golfing").checked +
+      props.fishing * document.getElementById("fishing").checked +
+      props.beach * document.getElementById("beach").checked +
+      props.villa * document.getElementById("villa").checked +
+      props.zipline * document.getElementById("zipline").checked +
+      props.rafting * document.getElementById("rafting").checked +
+      props.parachute * document.getElementById("parachute").checked +
+      props.biking * document.getElementById("biking").checked +
+      props.watersport * document.getElementById("watersport").checked +
+      props.scuba * document.getElementById("scuba").checked +
+      props.speed * document.getElementById("speed").checked +
+      props.bungee * document.getElementById("bungee").checked +
+      props.history * document.getElementById("history").checked +
+      props.unesco * document.getElementById("unesco").checked +
+      props.food * document.getElementById("food").checked +
+      props.museum * document.getElementById("museum").checked +
+      props.architecture * document.getElementById("architecture").checked +
+      props.locals * document.getElementById("locals").checked +
+      props.nightlife * document.getElementById("nightlife").checked +
+      props.bbirds * document.getElementById("bbirds").checked +
+      props.festival * document.getElementById("festival").checked
 		) / (
-			document.getElementById("wonders").checked +
-      document.getElementById("wildlife").checked +
-      document.getElementById("jungle").checked +
-      document.getElementById("desert").checked +
-      document.getElementById("islands").checked +
-      document.getElementById("winter").checked +
-      document.getElementById("eco").checked +
-      document.getElementById("mountains").checked +
-      document.getElementById("landscape").checked +
-      document.getElementById("wellness").checked +
-      document.getElementById("golfing").checked +
-      document.getElementById("fishing").checked +
-      document.getElementById("beach").checked +
-      document.getElementById("villa").checked +
-      document.getElementById("zipline").checked +
-      document.getElementById("rafting").checked +
-      document.getElementById("parachute").checked +
-      document.getElementById("biking").checked +
-      document.getElementById("watersport").checked +
-      document.getElementById("scuba").checked +
-      document.getElementById("speed").checked +
-      document.getElementById("bungee").checked +
-      document.getElementById("history").checked +
-      document.getElementById("unesco").checked +
-      document.getElementById("food").checked +
-      document.getElementById("museum").checked +
-      document.getElementById("architecture").checked +
-      document.getElementById("locals").checked +
-      document.getElementById("nightlife").checked +
-      document.getElementById("bbirds").checked +
-      document.getElementById("festival").checked
+			$(".bucketlist:checked").length
 		)
-	)/2;
+	) / 2;
 }
 
 function getBorderColor(d){
-    return d == 1   ? "green" :
-           d == 0.5 ? "orange" :
-           "red";
+	return d == 1   ? "green" :
+	       d == 0.5 ? "orange" :
+	       "red";
 }
 
 function getRecommendation(d){
-    return d == 1   ? "Great choice to empty<br>your bucketlist!" :
-           d == 0.5 ? "Sure you want to go here?" :
-           "Sorry mate, no opportunity to empty<br>your bucketlist here";
+	return d == 1   ? "Great choice to empty<br>your bucketlist!" :
+	       d == 0.5 ? "Sure you want to go here?" :
+				 "Sorry mate, no opportunity to empty<br>your bucketlist here";
+}
+
+function getStars(d){
+	return d == 1   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i>" :
+	       //d == 0.833   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i>" :
+				 //d == 0.667   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-o'></i>" :
+				 d == 0.500   ? "<i class='fa fa-star'></i><i class='fa fa-star-half-o'></i><i class='fa fa-star-o'></i>" :
+				 //d == 0.333   ? "<i class='fa fa-star'></i><i class='fa fa-star-o'></i><i class='fa fa-star-o'></i>" :
+				 //d == 0.167   ? "<i class='fa fa-star-half-o'></i><i class='fa fa-star-o'></i><i class='fa fa-star-o'></i>" :
+				 "<i class='fa fa-star-o'></i><i class='fa fa-star-o'></i><i class='fa fa-star-o'></i>";
 }
 
 // create activities layer
@@ -112,7 +92,10 @@ function mousemove(e){
 		var layer = e.target;
 	  popup.setLatLng(e.latlng);
 	  popup.setContent("<div class='marker-title'>" +
-			layer.feature.properties.name + "</div>" +
+			layer.feature.properties.name +
+			" " +
+			getStars(matchScore(layer.feature.properties)) +
+			"</div>" +
 			getRecommendation(matchScore(layer.feature.properties)));
 	  if (!popup._map) popup.openOn(map);
 	  window.clearTimeout(closeTooltip);
