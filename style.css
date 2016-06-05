@@ -1,12 +1,13 @@
 html, body {
   font-family: 'Rock Salt', cursive;
   font-size: 10px;
+  color: #2d2d2c;
   background-color: AntiqueWhite;
 }
 [class*='col-'] {
-    padding-right:0px;
-    padding-left:0px;
-    border-bottom: solid black 1px;
+  padding-right:0px;
+  padding-left:0px;
+  border-bottom: solid black 1px;
 }
 #container {
   position: absolute;
@@ -44,7 +45,7 @@ input[type=checkbox] + span {
 }
 input[type=checkbox]:checked + span {
   text-decoration: none;
-  color: black;
+  color: #2d2d2c;
   filter: none;
 }
 img {
@@ -57,4 +58,10 @@ img {
   left: 0;
   width: calc(100% - 10px);
   height: calc(100% - 10px);
+}
+.leaflet-popup-close-button {
+  display: none;
+}
+.leaflet-popup-content-wrapper {
+  pointer-events: none;
 }

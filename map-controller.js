@@ -1,7 +1,10 @@
 // Provide your access token on mapbox.com
-L.mapbox.accessToken = 'pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW94ZWc2bXowMGJzdmttMjF3aXlneGhtIn0.scl7vK6Iddx5vX27IB9U1A';
+L.mapbox.accessToken = "pk.eyJ1Ijoib3JibWtydWdlciIsImEiOiJjaW94ZWc2bXowMGJzdmttMjF3aXlneGhtIn0.scl7vK6Iddx5vX27IB9U1A";
 // Create a map in the div #map
-var map = L.mapbox.map('map', 'mapbox.streets', {maxZoom: 7, minZoom: 2}).setView([0,0],2);
+var map = L.mapbox.map("map", "mapbox.streets", {maxZoom: 7, minZoom: 2}).setView([28,0],2);
+// Create popup
+var popup = new L.Popup({ autoPan: false });
+// mixpanel.track("map viewed");
 
 // creates the scores 0 , 0.5 , 1
 var matchScore = function(props){
@@ -77,72 +80,121 @@ var matchScore = function(props){
 function getBorderColor(d){
     return d == 1   ? "green" :
            d == 0.5 ? "orange" :
-           d == 0 ? "red" :
-           "grey";
+           "red";
 }
+
+function getRecommendation(d){
+    return d == 1   ? "Great choice to empty<br>your bucketlist!" :
+           d == 0.5 ? "Sure you want to go here?" :
+           "Sorry mate, no opportunity to empty<br>your bucketlist here";
+}
+
+// create activities layer
+var activitiesLayer = L.mapbox.featureLayer(activitiesData);
 
 // create countries layer
 var countriesLayer = L.geoJson(countriesData,{
 	onEachFeature: onEachFeature
 });
 
-// create activities layer
-var activitiesLayer = L.mapbox.featureLayer(activitiesData);
-
 function onEachFeature(feature, layer) {
 	layer.on({
-		mouseover: highlightFeature,
-		mouseout: resetHighlight,
-		click: zoomToFeature
+    mousemove: mousemove,
+    mouseout: mouseout,
+    click: zoomToFeature
 	});
 }
 
-function highlightFeature(e){
+var closeTooltip;
+
+function mousemove(e){
+	if (map.getZoom() == 2) {
+		var layer = e.target;
+	  popup.setLatLng(e.latlng);
+	  popup.setContent("<div class='marker-title'>" +
+			layer.feature.properties.name + "</div>" +
+			getRecommendation(matchScore(layer.feature.properties)));
+	  if (!popup._map) popup.openOn(map);
+	  window.clearTimeout(closeTooltip);
+	  // highlight feature
+	  layer.setStyle({
+	    weight: 3,
+			opacity: 1
+	  });
+	  if (!L.Browser.ie && !L.Browser.opera) {
+	    layer.bringToFront();
+	  }
+	}
 }
 
-function resetHighlight(e){
-	document.getElementById("info").innerHTML = feature.properties.name;
+function mouseout(e){
+	if (map.getZoom() == 2) {
+		var layer = e.target;
+		layer.setStyle({
+				weight: 1,
+				opacity: matchScore(layer.feature.properties)/(4/3)+0.25
+		});
+	  closeTooltip = window.setTimeout(function() {
+	      map.closePopup();
+	  }, 100);
+	}
 }
 
 function zoomToFeature(e) {
-	map.fitBounds(e.target.getBounds());
-	activitiesLayer.setFilter(function (){
-		return true;
-	})
-	.eachLayer(function(marker){
-		marker.setIcon(L.mapbox.marker.icon({
-			"marker-color":"#A52A2A",
-			"marker-symbol":"star",
-			"marker-size":"small"
-		}));
-	}).addTo(map);
-	// filter activities from selected country
-	countriesLayer.eachLayer(function(layer){
-		layer.setStyle({
-			opacity: 0,
-			fillOpacity: 0
-		});
-	});
+	var layer = e.target;
+	if (matchScore(layer.feature.properties) >= 0.5 ) {
+		closeTooltip = window.setTimeout(function() {
+	      map.closePopup();
+	  }, 100);
+		// mixpanel.track(layer.feature.properties.name);
+		// zoom in to selected country
+		map.fitBounds(layer.getBounds());
+		// view only activities from selected country
+		activitiesLayer.setFilter(function (feature){
+				return feature.properties["country"] === layer.feature.id;
+			})
+			.eachLayer(function(marker){
+				marker.setIcon(L.mapbox.marker.icon({
+					"marker-color":"#A52A2A",
+					"marker-symbol":"star",
+					"marker-size":"small"
+				}));
+			}).addTo(map);
+		/* make colors countries transparant
+		countriesLayer.eachLayer(function(layer){
+			layer.setStyle({
+				opacity: 0,
+				fillOpacity: 0
+			});
+		}); */
+	}
 }
 
-// actions based on bucketlist
+// user actions bucketlist
 $(document).ready(function(){
   $(".bucketlist").change(function(){
-		var category = $(this).attr("id");
-		// mixpanel.track("test");
-		map.setView([0,0],2);
+		var $category = $(this).attr("id");
+		if ($(this).is(":checked")) {
+			// mixpanel.track($category);
+		}
+		map.setView([28,0],2);
 		map.removeLayer(activitiesLayer);
 		if (map.hasLayer(countriesLayer) == false) {
 			countriesLayer.addTo(map);
 		}
-    countriesLayer.eachLayer(function(layer){
-      layer.setStyle({
-				color: getBorderColor(matchScore(layer.feature.properties)),
-				weight: 3,
-				opacity: matchScore(layer.feature.properties)/2,
-				fillColor: "grey",
-        fillOpacity: 1-matchScore(layer.feature.properties)
-      });
-    });
+		if ($(".bucketlist:checked").length == 0 ) {
+			map.removeLayer(countriesLayer);
+			// show popup "please fill bucket"
+		} else {
+			countriesLayer.eachLayer(function(layer){
+	      layer.setStyle({
+					color: getBorderColor(matchScore(layer.feature.properties)),
+					weight: 1,
+					opacity: matchScore(layer.feature.properties)/(4/3)+0.25,
+					fillColor: "grey",
+	        fillOpacity: 1-matchScore(layer.feature.properties)
+	      });
+	    });
+		}
   });
 });
