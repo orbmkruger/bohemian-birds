@@ -71,13 +71,11 @@ function getBorderColor(d){
 	       d == 0.5 ? "orange" :
 	       "red";
 }
-
 function getRecommendation(d){
 	return d == 1   ? "great choice! Click to view the activities." :
 	       d == 0.5 ? "poor match, but happy to help!" :
 				 "has no opportunity to empty your selected bucketlist";
 }
-
 function getStars(d){
 	return d == 1   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i>" :
 	       //d == 0.833   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i>" :
