@@ -85,10 +85,10 @@ label {
 input[type=checkbox] {
   display: none;
 }
-input[type=checkbox] + span + span {
+input[type=checkbox] + span, input[type=checkbox] + span + span {
   color: grey;
 }
-input[type=checkbox]:checked + span + span {
+input[type=checkbox]:checked + span, input[type=checkbox]:checked + span + span {
   color: #2d2d2c;
   filter: none;
 }
