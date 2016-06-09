@@ -29,37 +29,30 @@ $("#info").html(firstStep);
 var matchScore = function(props){
 	return Math.round(
     .2 * (
-			props.wonders * $("#wonders").is(":checked") +
-      props.wildlife * $("#wildlife").is(":checked") +
-      props.jungle * $("#jungle").is(":checked") +
-      props.desert * $("#desert").is(":checked") +
-      props.islands * $("#islands").is(":checked") +
-      props.winter * $("#winter").is(":checked") +
-      props.eco * $("#eco").is(":checked") +
-      props.mountains * $("#mountains").is(":checked") +
-      props.landscape * $("#landscape").is(":checked") +
-      props.wellness * $("#wellness").is(":checked") +
-      props.golfing * $("#golfing").is(":checked") +
-      props.fishing * $("#fishing").is(":checked") +
-      props.beach * $("#beach").is(":checked") +
-      props.villa * $("#villa").is(":checked") +
-      props.zipline * $("#zipline").is(":checked") +
-      props.rafting * $("#rafting").is(":checked") +
-      props.parachute * $("#parachute").is(":checked") +
-      props.biking * $("#biking").is(":checked") +
-      props.watersport * $("#watersport").is(":checked") +
-      props.scuba * $("#scuba").is(":checked") +
-      props.speed * $("#speed").is(":checked") +
-      props.bungee * $("#bungee").is(":checked") +
-      props.history * $("#history").is(":checked") +
-      props.unesco * $("#unesco").is(":checked") +
-      props.food * $("#food").is(":checked") +
-      props.museum * $("#museum").is(":checked") +
-      props.architecture * $("#architecture").is(":checked") +
-      props.locals * $("#locals").is(":checked") +
-      props.nightlife * $("#nightlife").is(":checked") +
-      props.bbirds * $("#bbirds").is(":checked") +
-      props.festival * $("#festival").is(":checked")
+			props.airsport * document.getElementById("airsport").checked +
+			props.highspeed * document.getElementById("highspeed").checked +
+			props.river * document.getElementById("river").checked +
+			props.watersport * document.getElementById("watersport").checked +
+			props.zipline * document.getElementById("zipline").checked +
+			props.desert * document.getElementById("desert").checked +
+			props.gems * document.getElementById("gems").checked +
+			props.island * document.getElementById("island").checked +
+			props.jungle * document.getElementById("jungle").checked +
+			props.mothernature * document.getElementById("mothernature").checked +
+			props.mountain * document.getElementById("mountain").checked +
+			props.underwater * document.getElementById("underwater").checked +
+			props.water * document.getElementById("water").checked +
+			props.wildlife * document.getElementById("wildlife").checked +
+			props.foodlover * document.getElementById("foodlover").checked +
+			props.newwonder * document.getElementById("newwonder").checked +
+			props.oldwonder * document.getElementById("oldwonder").checked +
+			props.beach * document.getElementById("beach").checked +
+			props.golf * document.getElementById("golf").checked +
+			props.villa * document.getElementById("villa").checked +
+			props.wellness * document.getElementById("wellness").checked +
+			props.festival * document.getElementById("festival").checked +
+			props.locals * document.getElementById("locals").checked +
+			props.party * document.getElementById("party").checked
 		) / (
 			$(".bucketlist:checked").length
 		)
