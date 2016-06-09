@@ -72,9 +72,9 @@ function getBorderColor(d){
 	       "red";
 }
 function getRecommendation(d){
-	return d == 1   ? "great choice! Click to view the activities." :
-	       d == 0.5 ? "poor match, but happy to help!" :
-				 "has no opportunity to empty your selected bucketlist";
+	return d == 1   ? " a great choice! Click to view the activities." :
+	       d == 0.5 ? " not the best match, but happy to help!" :
+				 " no opportunity to empty your selected bucketlist";
 }
 function getStars(d){
 	return d == 1   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i>" :
@@ -105,7 +105,7 @@ function onEachFeature(feature, layer) {
 function mousemove(e){
 	if (map.getZoom() <= 3) {
 		var layer = e.target;
-	  $("#info").html(layer.feature.properties.name + " a " +
+	  $("#info").html(layer.feature.properties.name +
 			getRecommendation(matchScore(layer.feature.properties))
 		);
 	  // highlight feature
