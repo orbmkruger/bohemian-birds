@@ -69,7 +69,7 @@ var matchScore = function(props){
 function getBorderColor(d){
 	return d == 1   ? "green" :
 	       d == 0.5 ? "orange" :
-	       "red";
+	       "grey";
 }
 function getRecommendation(d){
 	return d == 1   ? " a great choice! Click to view the activities." :
@@ -80,7 +80,7 @@ function getStars(d){
 	return d == 1   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i>" :
 	       //d == 0.833   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half-o'></i>" :
 				 //d == 0.667   ? "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-o'></i>" :
-				 d == 0.500   ? "<i class='fa fa-star'></i><i class='fa fa-star-half-o'></i><i class='fa fa-star-o'></i>" :
+				 d == 0.5   ? "<i class='fa fa-star'></i><i class='fa fa-star-half-o'></i><i class='fa fa-star-o'></i>" :
 				 //d == 0.333   ? "<i class='fa fa-star'></i><i class='fa fa-star-o'></i><i class='fa fa-star-o'></i>" :
 				 //d == 0.167   ? "<i class='fa fa-star-half-o'></i><i class='fa fa-star-o'></i><i class='fa fa-star-o'></i>" :
 				 "<i class='fa fa-star-o'></i><i class='fa fa-star-o'></i><i class='fa fa-star-o'></i>";
@@ -137,9 +137,10 @@ function zoomToFeature(e) {
 		closeTooltip = window.setTimeout(function() {
 	      map.closePopup();
 	  }, 100);
-		// remove bucketlist and add country-info
-		$("#bucketlist").hide();
-		$("#map").css("left","0");
+		// add country-info
+		var mapWidth = $("#map").outerWidth();
+		$("#map").width(mapWidth - "250");
+		$("#map").css("right","250px");
 		$("#info").css("left","0");
 		$("#info").html(thirdStep);
 		$("#country > h1").html(layer.feature.properties.name);
@@ -174,6 +175,10 @@ $(document).ready(function(){
 		if ($(this).is(":checked")) {
 			// mixpanel.track($category);
 		}
+		var documentWidth = $(document).width();;
+		$("#map").width(documentWidth - "250");
+		$("#map").css("right","0px");
+		$("#country").hide();
 		map.fitBounds([[65,0],[-25,60]]);
 		map.removeLayer(activitiesLayer);
 		if (map.hasLayer(countriesLayer) == false) {
