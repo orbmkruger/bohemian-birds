@@ -136,9 +136,10 @@ function zoomToFeature(e) {
 		if ($("#country").is(":hidden")) {
 			var mapWidth = $("#map").outerWidth();
 			$("#map").width(mapWidth - "250");
-			$("#country").show();
 			$("#map").css("right","250px");
-			$("#info").css("left","0");
+			$("#info").width(mapWidth - "250");
+			$("#info").css("right","250px");
+			$("#country").show();
 		}
 		// zoom in to selected country
 		map.fitBounds(layer.getBounds());
@@ -176,6 +177,8 @@ $(document).ready(function(){
 			$("#country").hide();
 			$("#map").css("right","0px");
 			$("#map").width(documentWidth - "250");
+			$("#info").width(documentWidth - "250");
+			$("#info").css("right","0px");
 		}
 		var documentWidth = $(document).width();;
 		map.fitBounds([[65,0],[-25,60]]);
