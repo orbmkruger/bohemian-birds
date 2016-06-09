@@ -145,7 +145,7 @@ function zoomToFeature(e) {
 		map.fitBounds(layer.getBounds());
 		// view only activities from selected country
 		activitiesLayer.setFilter(function (feature){
-				return feature.properties["country"] === layer.feature.id;
+				return feature.properties["country-id"] === layer.feature.id;
 			})
 			.eachLayer(function(layer){
 				layer.setIcon(L.mapbox.marker.icon({
