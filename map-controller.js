@@ -152,7 +152,7 @@ function zoomToFeature(e) {
 					"marker-color":"#A52A2A",
 					"marker-symbol":"star"
 				}));
-		    layer.bindPopup("<b>" + layer.feature.properties.title + "</b><br><img src='activity.png'>");
+		    layer.bindPopup("<b>" + layer.feature.properties.title + "</b><br>" + layer.feature.properties.description + "</p>");
 			}).addTo(map);
 		/* make colors countries transparant
 		countriesLayer.eachLayer(function(layer){
