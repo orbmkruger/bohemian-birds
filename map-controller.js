@@ -131,13 +131,15 @@ function zoomToFeature(e) {
 	      map.closePopup();
 	  }, 100);
 		// add country-info
-		var mapWidth = $("#map").outerWidth();
-		$("#map").width(mapWidth - "250");
-		$("#map").css("right","250px");
-		$("#info").css("left","0");
 		$("#info").html(thirdStep);
 		$("#country > h1").html(layer.feature.properties.name);
-		$("#country").show();
+		if ($("#country").is(":hidden")) {
+			var mapWidth = $("#map").outerWidth();
+			$("#map").width(mapWidth - "250");
+			$("#country").show();
+			$("#map").css("right","250px");
+			$("#info").css("left","0");
+		}
 		// zoom in to selected country
 		map.fitBounds(layer.getBounds());
 		// view only activities from selected country
