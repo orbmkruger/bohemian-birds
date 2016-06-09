@@ -168,10 +168,14 @@ $(document).ready(function(){
 		if ($(this).is(":checked")) {
 			// mixpanel.track($category);
 		}
+		// hide country again
+		if ($("#country").is(":visible")) {
+			var documentWidth = $(document).width();;
+			$("#country").hide();
+			$("#map").css("right","0px");
+			$("#map").width(documentWidth - "250");
+		}
 		var documentWidth = $(document).width();;
-		$("#map").width(documentWidth - "250");
-		$("#map").css("right","0px");
-		$("#country").hide();
 		map.fitBounds([[65,0],[-25,60]]);
 		map.removeLayer(activitiesLayer);
 		if (map.hasLayer(countriesLayer) == false) {
