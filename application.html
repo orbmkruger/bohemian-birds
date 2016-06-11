@@ -2,6 +2,13 @@
 <html>
 <head>
   <title>Bohemian Birds - Interactive Map</title>
+    <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+	<meta property="og:url"           content="http://bohemianbirds.com" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Bohemian Birds" />
+	<meta property="og:description"   content="I'm going to empty my bucketlist here :)" />
+	<meta property="og:image"         content="/activity.png" />
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <!-- Google font-->
@@ -27,6 +34,16 @@
 </head>
 
 <body>
+  <!-- Facebook sharing-->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <!-- End Facebook sharing-->
   <div id="map"></div>
   <div id="info"></div>
   <div id="bucketlist" class="sidebar">
@@ -63,10 +80,12 @@
   <div id="country" class="sidebar">
     <h1></h1>
     <img src="activity.png">
+    <p class="description"></p>
     <div id="footer">
       <button type="button" class="btn btn-danger btn-group-justified" data-toggle="modal" data-target="#proposal">
         Get free proposal
       </button>
+      <!-- hide
       <p class="text-center">or share via:</p>
       <div class="btn-group btn-group-justified" role="group">
         <div class="btn-group" role="group">
@@ -78,7 +97,7 @@
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-warning">Instagram</button>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
   <div class="modal fade" tabindex="-1" role="dialog" id="proposal">
@@ -86,21 +105,24 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Ask a free proposal</h4>
+          <h4 class="modal-title">Bohemian Birds - Ask a free proposal</h4>
         </div>
         <div class="modal-body">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Naam">
-            <input type="text" class="form-control" placeholder="E-mailadres">
-            <input type="text" class="form-control" placeholder="Telefoonnummer">
-            <input type="text" class="form-control" placeholder="Groepsgrootte">
-            <input type="text" class="form-control" placeholder="Budget">
+          <form action="https://formspree.io/info@bohemianbirds.com" method="POST" class="form-horizontal" role="form">
+            <input type="text" id="name" class="form-control" name="name" placeholder="Naam">
+            <input type="email" id="email" class="form-control" name="_replyto" placeholder="E-mail adres">
+            <input type="text" id="telefoonnummer" class="form-control" name="mobiel" placeholder="Mobiel">
+            <input type="text" id="groepsgrootte" class="form-control" name="groepsgrootte" placeholder="Groepsgrootte">
+            <div class="hidden">
+              <input type="text" id="form_country" name="land">
+              <input type="text" name="_subject" value="Request from interactive map">
+            </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <input type="submit" value="Send" class="btn btn-primary">
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send</button>
-        </div>
+        </form>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->

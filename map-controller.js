@@ -133,6 +133,8 @@ function zoomToFeature(e) {
 		// add country-info
 		$("#info").html(thirdStep);
 		$("#country > h1").html(layer.feature.properties.name);
+		$("#country > .description").html(layer.feature.properties.description);
+		$("#form_country").val(layer.feature.properties.name);
 		if ($("#country").is(":hidden")) {
 			var mapWidth = $("#map").outerWidth();
 			$("#map").width(mapWidth - "250");
